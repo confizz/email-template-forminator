@@ -2,8 +2,9 @@
 /**
  * Plugin Name: Email Template for Forminator
  * Description: Custom email template
- * Version: 1.0.0
- * Author: Arshid
+ * Version: 1.1.0
+ * Author: confizz
+ * Original Author: Arshid
  */
 
 new EmailTemplate4Forminator;
@@ -33,7 +34,7 @@ class EmailTemplate4Forminator{
     }
 
     public function email4frm_clean( $body ){
-        $template = file_get_contents( plugin_dir_path(__FILE__) .'/template.php' );
+        $template = file_get_contents( locate_template( 'mail-template.php' ) );
         $body = str_replace( '{msg}', $this->msg, $template);
         $body = str_replace( $this->tags, $this->values, $body);
         return $body;
